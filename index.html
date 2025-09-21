@@ -1,11 +1,182 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Gülistan Şahin – Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gulistan Sahin – Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* eigene Farben (nicht Brittanys) */
+      --bg: #0d0f1b;          /* tiefes Indigo */
+      --ink: #ecf2ff;         /* helle Schrift */
+      --muted: #9aaad1;       /* Sekundärtext */
+      --primary: #7ad0c9;     /* Türkis-Akzent */
+      --line: #1e2a4a;        /* Linien */
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 800px at -15% -25%, #15213b 0%, transparent 60%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    a { color: var(--ink); text-decoration: none; }
+    a:hover { color: var(--primary); }
+
+    /* Layout wie Brittany: linke fixe Spalte, rechte Content-Spalte */
+    .page { display: grid; grid-template-columns: 360px 1fr; min-height: 100vh; }
+    .sidebar {
+      position: sticky; top: 0; height: 100vh;
+      padding: 56px 36px; display: flex; flex-direction: column;
+      border-right: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(13,15,27,.96), rgba(13,15,27,.86));
+    }
+    .brand { font-size: 46px; font-weight: 800; letter-spacing: .2px; }
+    .role { margin-top: 6px; font-weight: 600; color: var(--muted); }
+    .tagline { margin: 18px 0 28px; color: var(--muted); max-width: 280px; }
+
+    .snav { display: grid; gap: 12px; margin: 28px 0 34px; }
+    .snav a { color: var(--muted); font-weight: 700; letter-spacing: .18em; font-size: 12px; display:flex; align-items:center; gap:12px }
+    .snav a::before { content:""; width: 28px; height:1px; background: var(--line); }
+    .snav a.active, .snav a:hover { color: var(--ink); }
+
+    .chips { margin-top:auto; margin-bottom:16px; display:flex; flex-wrap:wrap; gap:10px }
+    .chip { border:1px solid var(--line); border-radius:999px; padding:6px 10px; color:var(--muted); font-size:12px; background:rgba(255,255,255,.02)}
+
+    .social { display: flex; gap: 16px; opacity:.95 }
+    .social a { color: var(--ink); }
+
+    .content { padding: 64px 56px; max-width: 960px; }
+    section { margin-bottom: 56px; }
+    h2 { font-size: 12px; letter-spacing: .22em; color: var(--primary); margin: 0 0 12px; text-transform: uppercase; }
+    h3 { margin: 0 0 6px; }
+    p { color: var(--muted); margin: 8px 0; }
+    ul { margin: 8px 0 0 18px; color: var(--muted); }
+    li { margin: 6px 0; }
+
+    .entry { padding: 18px 0; border-top: 1px solid var(--line); }
+    .meta { display: flex; gap: 10px; color: var(--muted); font-size: 13px; }
+
+    footer { border-top: 1px solid var(--line); padding-top: 18px; color: var(--muted); font-size: 14px }
+
+    @media (max-width: 980px) {
+      .page { grid-template-columns: 1fr; }
+      .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 28px 22px; }
+      .content { padding: 28px 22px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hallo, ich bin Gülistan!</h1>
-  <p>Willkommen auf meiner persönlichen Webseite.</p>
+  <div class="page">
+    <aside class="sidebar">
+      <div class="brand">Gulistan Sahin</div>
+      <div class="role">Business Intelligence · Machine Learning · Automation</div>
+      <p class="tagline">Ich gestalte Daten und Prozesse so, dass Teams schneller zu klaren Entscheidungen kommen.</p>
+
+      <div class="snav">
+        <a href="#about">ABOUT</a>
+        <a href="#experience">EXPERIENCE</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#contact">CONTACT</a>
+      </div>
+
+      <div class="chips">
+        <span class="chip">Splunk</span><span class="chip">Tableau</span><span class="chip">SQL</span><span class="chip">Python</span>
+      </div>
+      <div class="social">
+        <a href="https://github.com/gulistansahin" target="_blank" aria-label="GitHub" title="GitHub">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.75.09-.74.09-.74 1.21.09 1.85 1.25 1.85 1.25 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.48-1.34-5.48-5.97 0-1.32.47-2.4 1.24-3.24-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.92 1.24 3.24 0 4.64-2.81 5.66-5.49 5.96.43.37.81 1.1.81 2.23v3.3c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z" fill="currentColor"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/gulistan-sahin-b3b383275/" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.59c0-1.33-.02-3.04-1.86-3.04-1.86 0-2.15 1.45-2.15 2.95v5.68H9.34V9h3.41v1.56h.05c.47-.9 1.62-1.86 3.34-1.86 3.57 0 4.23 2.35 4.23 5.41v6.34ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z" fill="currentColor"/></svg>
+        </a>
+        <a href="mailto:sahingulistan21@gmail.com" aria-label="E‑Mail" title="E‑Mail">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="about">
+        <h2>About</h2>
+        <p>Ich studiere Wirtschaftsinformatik mit dem Fokus auf Business Intelligence, Machine Learning und Process Automation. Am meisten Freude habe ich an Projekten, bei denen Daten greifbare Wirkung entfalten – sei es durch klare Insights, automatisierte Abläufe oder nachvollziehbare Reports.</p>
+        <p>Bei Siemens habe ich als Werkstudentin mit Splunk KPI‑Dashboards gebaut, in Tableau Versanddaten automatisiert und mit Python ML‑Prototypen erstellt. Ab Oktober unterstütze ich die ING Deutschland im Bereich Business Intelligence & Process Automation.</p>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <div class="entry">
+          <h3>Siemens · Business Analytics (Werkstudentin)</h3>
+          <div class="meta">05/2024 – 09/2025 · Splunk, Tableau, Python</div>
+          <ul>
+            <li>KPI‑Dashboards in Splunk mit Drilldowns erstellt (Übersicht → Anlage → Station).</li>
+            <li>Tableau‑Reports automatisiert (z. B. Versandgewicht nach Material/Land).</li>
+            <li>Kleine ML‑Prototypen mit Python programmiert.</li>
+          </ul>
+        </div>
+        <div class="entry">
+          <h3>ING Deutschland · BI & Process Automation (Praktikantin)</h3>
+          <div class="meta">Start: 10/2025</div>
+          <p>Geplante Aufgaben: BI‑Analysen, Prozessautomatisierung, KPI‑Dokumentation.</p>
+        </div>
+        <div class="entry">
+          <h3>HS Ansbach · Wirtschaftsinformatik (B.Sc.)</h3>
+          <div class="meta">Seit 10/2022</div>
+          <p>Schwerpunkte: Business Intelligence, Machine Learning, Cloud.</p>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="entry">
+          <h3>AKSL KPI‑Dashboard (Splunk)</h3>
+          <p>Mehrstufiges Dashboard für Anlagen‑KPIs mit Drilldowns. <em>Impact:</em> mehr Transparenz, weniger manuelle Reports.</p>
+        </div>
+        <div class="entry">
+          <h3>Tableau: Gewicht Versand</h3>
+          <p>Automatisierte Berechnung und Visualisierung von Versandgewichten nach Material und Land. <em>Impact:</em> weniger Fehler, Zeitersparnis.</p>
+        </div>
+        <div class="entry">
+          <h3>AWS IAM Mini‑Labs</h3>
+          <p>User/Group‑Management, Policies, Least Privilege. <em>Impact:</em> mehr Sicherheit & Governance.</p>
+        </div>
+        <div class="entry">
+          <h3>QA‑Pipeline (Python)</h3>
+          <p>Prototyp für Passage‑Retrieval mit Tokenisierung, Embeddings, Ähnlichkeitssuche. <em>Impact:</em> Lernprojekt für ML/NLP.</p>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:sahingulistan21@gmail.com">sahingulistan21@gmail.com</a><br>
+           LinkedIn: <a href="https://www.linkedin.com/in/gulistan-sahin-b3b383275/" target="_blank">linkedin.com/in/gulistan-sahin-b3b383275</a><br>
+           GitHub: <a href="https://github.com/gulistansahin" target="_blank">github.com/gulistansahin</a></p>
+      </section>
+
+      <footer>© Gulistan Sahin</footer>
+    </main>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('main section');
+    const links = document.querySelectorAll('.snav a');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const id = '#' + e.target.id;
+          const link = [...links].find(l => l.getAttribute('href') === id);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, {rootMargin: '-40% 0px -50% 0px'});
+    sections.forEach(s => obs.observe(s));
+  </script>
 </body>
 </html>
